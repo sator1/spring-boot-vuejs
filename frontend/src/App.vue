@@ -1,37 +1,41 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Hello</router-link> |
-      <router-link to="/callservice">Service</router-link> |
-      <router-link to="/bootstrap">Bootstrap</router-link> |
-      <router-link to="/user">User</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/protected">Protected</router-link>
-    </div>
-    <router-view :hellomsg="msg"></router-view>
+    <Sidebar :projects="projects" />
+    <router-view />
   </div>
 </template>
 
 <script>
+import { creators as actions } from "./store/actions";
+import Sidebar from "@/components/Sidebar.vue";
 
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to your Vue.js powered Spring Boot App'
+  components: {
+    Sidebar
+  },
+  mounted() {
+    actions.getProjects(this.$store.dispatch);
+  },
+  computed: {
+    projects() {
+      return this.$store.state.projects;
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
+@import "@/styles/index.scss";
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  width: 100%;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 20px;
+  display: flex;
+  flex-grow: 1;
+  background: $white;
 }
 
 #nav {
@@ -40,7 +44,7 @@ export default {
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-     color: #42b983;
+      color: #42b983;
     }
   }
 }

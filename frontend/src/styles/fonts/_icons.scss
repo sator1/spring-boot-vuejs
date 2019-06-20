@@ -1,0 +1,42 @@
+// Icons
+// -------------------------
+
+
+[data-icons8]:before,
+.icons8-checkmark:before,
+.icons8-checkmark-filled:before,
+.icons8-contacts:before,
+.icons8-contacts-filled:before,
+.icons8-delete:before,
+.icons8-delete-filled:before,
+.icons8-edit:before,
+.icons8-edit-filled:before,
+.icons8-notification:before,
+.icons8-notification-2:before,
+.icons8-search:before,
+.icons8-search-filled:before,
+.icons8-settings:before,
+.icons8-settings-filled:before,
+.icons8-trash:before,
+.icons8-trash-filled:before,
+{ @include icons8-font; }
+
+[data-icons8]:before { content: attr(data-icons8); }
+
+.icons8-checkmark:before { content: $icons8-var-checkmark; }
+.icons8-checkmark-filled:before { content: $icons8-var-checkmark-filled; }
+.icons8-contacts:before { content: $icons8-var-contacts; }
+.icons8-contacts-filled:before { content: $icons8-var-contacts-filled; }
+.icons8-delete:before { content: $icons8-var-delete; }
+.icons8-delete-filled:before { content: $icons8-var-delete-filled; }
+.icons8-edit:before { content: $icons8-var-edit; }
+.icons8-edit-filled:before { content: $icons8-var-edit-filled; }
+.icons8-notification:before { content: $icons8-var-notification; }
+.icons8-notification-2:before { content: $icons8-var-notification-2; }
+.icons8-search:before { content: $icons8-var-search; }
+.icons8-search-filled:before { content: $icons8-var-search-filled; }
+.icons8-settings:before { content: $icons8-var-settings; }
+.icons8-settings-filled:before { content: $icons8-var-settings-filled; }
+.icons8-trash:before { content: $icons8-var-trash; }
+.icons8-trash-filled:before { content: $icons8-var-trash-filled; }
+

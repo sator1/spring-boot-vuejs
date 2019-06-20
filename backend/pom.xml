@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>backend</artifactId>
 	<packaging>jar</packaging>
 
 	<parent>
-		<groupId>de.jonashackt</groupId>
+		<groupId>com.reccyltd</groupId>
 		<artifactId>spring-boot-vuejs</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -38,6 +38,22 @@
 		</dependency>
 
 		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-core</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -56,11 +72,11 @@
 		</dependency>
 
 		<!-- PostgreSQL used in Staging and Production environment, e.g. on Heroku -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
 
 		<!-- Testing -->
 		<dependency>
@@ -88,6 +104,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -97,31 +119,31 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy Vue.js frontend content</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>src/main/resources/public</outputDirectory>
-                            <overwrite>true</overwrite>
-                            <resources>
-                                <resource>
-                                    <directory>${project.parent.basedir}/frontend/target/dist</directory>
-                                    <includes>
-                                        <include>static/</include>
-                                        <include>index.html</include>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy Vue.js frontend content</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/main/resources/public</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.parent.basedir}/frontend/target/dist</directory>
+									<includes>
+										<include>static/</include>
+										<include>index.html</include>
 										<include>favicon.ico</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

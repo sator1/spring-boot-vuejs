@@ -1,16 +1,27 @@
-# spring-boot-vuejs
+# reccy.io
+
+
+## Development
+
+### Swagger UI 
+http://localhost:8098/swagger-ui.html
+
+### Build and run
+
+``mvn clean install && mvn --projects backend spring-boot:run``
+
+---
 
 [![Build Status](https://travis-ci.org/jonashackt/spring-boot-vuejs.svg?branch=master)](https://travis-ci.org/jonashackt/spring-boot-vuejs)
 [![Coverage Status](https://coveralls.io/repos/github/jonashackt/spring-boot-vuejs/badge.svg?branch=master)](https://coveralls.io/github/jonashackt/spring-boot-vuejs?branch=master)
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/jonashackt/spring-boot-vuejs/blob/master/LICENSE)
 [![versionspringboot](https://img.shields.io/badge/springboot-2.1.5_RELEASE-brightgreen.svg)](https://github.com/spring-projects/spring-boot)
-[![versionjava](https://img.shields.io/badge/jdk-8,_9,_11-brightgreen.svg?logo=java)](https://github.com/spring-projects/spring-boot)
-[![versionnodejs](https://img.shields.io/badge/nodejs-v11.14.0-brightgreen.svg?logo=node.js)](https://nodejs.org/en/)
-[![versionvuejs](https://img.shields.io/badge/vue.js-2.6.10-brightgreen.svg?logo=vue.js)](https://vuejs.org/)
-[![versionvuecli](https://img.shields.io/badge/vue_CLI-3.8.2-brightgreen.svg?logo=vue.js)](https://cli.vuejs.org/)
-[![versionwebpack](https://img.shields.io/badge/webpack-4.28.4-brightgreen.svg?logo=webpack)](https://webpack.js.org/)
+[![versionnodejs](https://img.shields.io/badge/nodejs-v11.14.0-brightgreen.svg)](https://nodejs.org/en/)
+[![versionvuejs](https://img.shields.io/badge/vue.js-2.6.10-brightgreen.svg)](https://vuejs.org/)
+[![versionvuecli](https://img.shields.io/badge/vue_CLI-3.8.2-brightgreen.svg)](https://cli.vuejs.org/)
+[![versionwebpack](https://img.shields.io/badge/webpack-4.28.4-brightgreen.svg)](https://webpack.js.org/)
 [![versionaxios](https://img.shields.io/badge/axios-0.18.0-brightgreen.svg)](https://github.com/axios/axios)
-[![versionjest](https://img.shields.io/badge/jest-23.6.0-brightgreen.svg?logo=jest)](https://jestjs.io/)
+[![versionjest](https://img.shields.io/badge/jest-23.6.0-brightgreen.svg)](https://jestjs.io/)
 [![versionnightwatch](https://img.shields.io/badge/nightwatch-0.9.21-brightgreen.svg)](http://nightwatchjs.org/)
 
 > **If you´re a JavaMagazin / blog.codecentric.de / Softwerker reader**, consider switching to [vue-cli-v2-webpack-v3](https://github.com/jonashackt/spring-boot-vuejs/tree/vue-cli-v2-webpack-v3)
@@ -54,7 +65,6 @@ This project is used as example in a variety of articles & as eBook:
 * [OMG! My package.json is so small - Vue CLI 3 Plugins](#omg-my-packagejson-is-so-small---vue-cli-3-plugins)
 * [The vue.config.js file](#the-vueconfigjs-file)
 * [Build and run with Docker](#build-and-run-with-docker)
-* [Run with JDK 8, 9 or 11ff](#run-with-jdk-8-9-or-11-ff)
 * [Secure Spring Boot backend and protect Vue.js frontend](#secure-spring-boot-backend-and-protect-vuejs-frontend)
 * [Secure the backend API with Spring Security](#secure-the-backend-api-with-spring-security)
 * [Configure Spring Security](#configure-spring-security)
@@ -70,7 +80,6 @@ This project is used as example in a variety of articles & as eBook:
 * [Last but not least: define getters for the vuex state](#last-but-not-least-define-getters-for-the-vuex-state)
 * [Use vuex Store inside the Login component and forward to Protected.vue, if Login succeeded](#use-vuex-store-inside-the-login-component-and-forward-to-protectedvue-if-login-succeeded)
 * [Redirect user from Protected.vue to Login.vue, if not authenticated before](#redirect-user-from-protectedvue-to-loginvue-if-not-authenticated-before)
-* [Check auth state at secured backend endpoints](#check-auth-state-at-secured-backend-endpoints)
 
 
 
@@ -547,9 +556,9 @@ Mind the addition to the backend's [pom.xml](backend/pom.xml) described here: ht
 Now you're able to use Spring Data's magic - all you need is an Interface like [UserRepository.java](backend/src/main/java/de/jonashackt/springbootvuejs/repository/UserRepository.java):
 
 ```java
-package de.jonashackt.springbootvuejs.repository;
+package com.reccyltd.springbootvuejs.repository;
 
-import de.jonashackt.springbootvuejs.domain.User;
+import com.reccyltd.springbootvuejs.domain.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -568,9 +577,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 Now write your Testcases accordingly like [UserRepositoryTest.java](backend/src/test/java/de/jonashackt/springbootvuejs/repository/UserRepositoryTest.java):
 
 ```java
-package de.jonashackt.springbootvuejs.repository;
+package com.reccyltd.springbootvuejs.repository;
 
-import de.jonashackt.springbootvuejs.domain.User;
+import com.reccyltd.springbootvuejs.domain.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -1215,33 +1224,6 @@ Now access your Dockerized Spring Boot powererd Vue.js app inside your Browser a
 If you have played enough with your Dockerized app, don't forget to stop (`docker stop 745e854d7781`) and remove (`docker rm 745e854d7781`) it in the end.
 
 
-# Run with JDK 8, 9 or 11 ff
-
-As with Spring Boot, we can define the desired Java version simply by editing our backend's [pom.xml](backend/pom.xml): 
-
-```
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
-```
-
-If you want to have `JDK9`, place a `<java.version>9</java.version>` or other versions just as you like to (see [this stackoverflow answer](https://stackoverflow.com/questions/54467287/how-to-specify-java-11-version-in-spring-spring-boot-pom-xml)).
-
-Spring Boot handles the needed `maven.compiler.release`, which tell's Java from version 9 on to build for a specific target.
-
-We just set `1.8` as the baseline here, since if we set a newer version as the standard, builds on older versions then 8 will fail (see [this build log for example](https://travis-ci.org/jonashackt/spring-boot-vuejs/builds/547227298).
-
-Additionally, we use TravisCI to run the Maven build on some mayor Java versions - have a look into the [.travis.yml](.travis.yml):
-
-```
-language: java
-jdk:
-  - oraclejdk8
-  - oraclejdk9
-  - oraclejdk11
-```
-
-
 # Secure Spring Boot backend and protect Vue.js frontend
 
 Securing parts of our application must consist of two parts: securing the Spring Boot backend - and reacting on that secured backend in the Vue.js frontend.
@@ -1315,7 +1297,7 @@ With Spring it is relatively easy to secure our API. Let's add `spring-boot-star
 Also create a new @Configuration annotated class called [WebSecurityConfiguration.class](backend/src/main/java/de/jonashackt/springbootvuejs/configuration/WebSecurityConfiguration.java):
 
 ```java
-package de.jonashackt.springbootvuejs.configuration;
+package com.reccyltd.springbootvuejs.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

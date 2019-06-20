@@ -1,28 +1,29 @@
-# frontend
-
-> A Vue.js & Spring Boot example project
+# reccy
 
 ## Project setup
 ```
-npm install
+yarn install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+yarn run serve
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+yarn run build
 ```
 
-### Run your unit tests
+### Run your tests
 ```
-npm run test:unit
+yarn run test
 ```
 
-### Run your end-to-end tests
+### Lints and fixes files
 ```
-npm run test:e2e
+yarn run lint
 ```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
